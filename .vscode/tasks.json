@@ -1,0 +1,20 @@
+{
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "C/C++: g++.exe compilar archivo activo",
+      "command": "g++",
+      "args": ["${fileBasename}", "-fdiagnostics-color=always", "-o", "${fileBasenameNoExtension}", "-g"],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Tarea generada por el depurador."
+    }
+  ],
+  "version": "2.0.0"
+}
