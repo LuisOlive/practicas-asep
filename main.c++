@@ -21,6 +21,10 @@ int main() {
     cout << "5 ft es igual a " << distancia.convertir(5, "ft", "cm") << " cm" << endl;
     cout << "5 mi es igual a " << distancia.convertir(5, "mi", "km") << " km" << endl;
 
+    puts(formatoIngenieria(34500, "V"));
+    puts(formatoIngenieria(50000000, "VA"));
+    puts(formatoIngenieria(5386576, "A"));
+
     system("pause");
     return 0;
 }

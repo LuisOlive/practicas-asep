@@ -41,7 +41,8 @@ string buscarPrefijo(int potenciaDeDiez = 0) {
     prefijo = " m";
   }
 
-  return std::to_string(valor) + buscarPrefijo(potenciaDeDiez);
+  potenciaDeDiez -= 3; 
+  return std::to_string(valor / powl(10, potenciaDeDiez)) + " " + buscarPrefijo(potenciaDeDiez) + unidad;
 }
 
 #endif
