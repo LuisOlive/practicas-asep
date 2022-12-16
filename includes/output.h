@@ -23,12 +23,16 @@ string buscarPrefijo(int potenciaDeDiez = 0)
     return "M";
   case 9:
     return "G";
+  case 12:
+    return "T";
   case -3:
     return "m";
   case -6:
     return "u";
   case -9:
     return "n";
+  case -12:
+    return "p";
   }
 
   return "";
@@ -46,10 +50,6 @@ string formatoIngenieria(const double valor, const string unidad)
   int potenciaDeDiez = 0;
   double buff = abs_(valor);
 
-  puts("-------");
-  std::cout << "buff antes:" << buff << std::endl;
-  std::cout << "potenciaDeDiez antes:" << potenciaDeDiez << std::endl;
-
   // pra numeros grandes
   while (buff > pow(10, potenciaDeDiez)) // {caso 1} 34 500 > 10->Sí, 1000 -> sí, 100 000 -> No
     potenciaDeDiez += 3;
@@ -62,8 +62,6 @@ string formatoIngenieria(const double valor, const string unidad)
     potenciaDeDiez = 0;
   
   buff = valor / pow(10., potenciaDeDiez);
-  std::cout << "buff despues:" << buff << std::endl;
-  std::cout << "potenciaDeDiez despues:" << potenciaDeDiez << std::endl;
   
   return std::to_string(buff) + " " + buscarPrefijo(potenciaDeDiez) + unidad;
 }
