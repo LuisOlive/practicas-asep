@@ -24,6 +24,9 @@ int main() {
     puts(formatoIngenieria(34500, "V"));
     puts(formatoIngenieria(50000000, "VA"));
     puts(formatoIngenieria(5386576, "A"));
+    puts(formatoIngenieria(.0000000345, "A"));
+    puts(formatoIngenieria(.00789, "S"));
+    puts(formatoIngenieria(.789, "km"));
 
     system("pause");
     return 0;

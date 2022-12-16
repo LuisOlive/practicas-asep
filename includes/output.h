@@ -26,23 +26,20 @@ string buscarPrefijo(int potenciaDeDiez = 0) {
   return "";
 }
 
-    string formatoIngenieria(double valor, string unidad)
-{ // 34 500
+    string formatoIngenieria(const double valor, const string unidad)
+    { // {caso 1} 34 500, {caso 2} .0000000345
   string prefijo = " ";
   int potenciaDeDiez = 0;
+  double buff = valor;
 
-  while (valor > powl(10, potenciaDeDiez) ) // 34 500 > 10->Sí, 1000 -> sí, 100 000 -> No
-    potenciaDeDiez+= 3; 
-  
+  while (valor > powl(10, potenciaDeDiez) ) // {caso 1} 34 500 > 10->Sí, 1000 -> sí, 100 000 -> No
+    potenciaDeDiez+= 3;
 
-  if(valor < .1) 
-  {
-    valor *= 1000;
-    prefijo = " m";
-  }
+  while (valor < powl(10, potenciaDeDiez)) // {caso 2} .0000000345 < 10->si, .001->si, .000 001->si, .000 000 001->no
+    potenciaDeDiez -= 3;
 
-  potenciaDeDiez -= 3; 
-  return std::to_string(valor / powl(10, potenciaDeDiez)) + " " + buscarPrefijo(potenciaDeDiez) + unidad;
-}
+  buff = valor / powl(10, potenciaDeDiez); 
+  return std::to_string(buff) + " " + buscarPrefijo(potenciaDeDiez) + unidad;
+    }
 
 #endif
