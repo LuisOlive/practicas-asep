@@ -4,7 +4,7 @@
       "type": "cppbuild",
       "label": "C/C++: g++.exe compilar archivo activo",
       "command": "g++",
-      "args": ["${fileBasename}", "-fdiagnostics-color=always", "-o", "${fileBasenameNoExtension}", "-g"],
+      "args": ["${fileBasename}", "includes/*", "-fdiagnostics-color=always", "-o", "${fileBasenameNoExtension}", "-g"],
       "options": {
         "cwd": "${fileDirname}"
       },

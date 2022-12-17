@@ -2,32 +2,37 @@
 #include <cstdlib>
 
 #include "includes/magnitudes.h"
+#include "includes/formatoDeIngenieria.h"
 
 using namespace std;
 
-int main() {
-    tiempo.agregarEquivalencia(1/60, "min");
-    cout << "125 min es igual a " << tiempo.convertir(125, "min", "seg") << " seg" << endl;
-
-    // todo esto a fuerzas debe ser en main
-    Magnitud distancia = Magnitud("mt");
-
-    distancia.agregarEquivalencia(100, "cm")
-        .agregarEquivalencia(3.28084, "ft")
-        .agregarEquivalencia(1e-3, "km")
-        .agregarEquivalencia(2.54 / 100, "in")
-        .agregarEquivalencia(621.37119224e-6, "mi");
+int main()
+{
+    usarMagnitudes();
 
     cout << "5 ft es igual a " << distancia.convertir(5, "ft", "cm") << " cm" << endl;
     cout << "5 mi es igual a " << distancia.convertir(5, "mi", "km") << " km" << endl;
+
+    cout << "1 in es igual a " << distancia.convertir(1, "in", "cm") << " cm" << endl;
+    cout << "5 cm2 es igual a " << distancia.convertir(5, "cm2", "cmil") << " cmil" << endl;
+    cout << "5 cm2 es igual a " << area.convertir(5, "cm2", "cmil") << " cmil" << endl;
 
     puts(formatoIngenieria(-34500, "V"));
     puts(formatoIngenieria(50000000, "VA"));
     puts(formatoIngenieria(-5386576, "A"));
     puts(formatoIngenieria(.0000000345, "A"));
     puts(formatoIngenieria(-.00789, "S"));
+    puts(formatoIngenieria(.06789, "S"));
     puts(formatoIngenieria(.789, "km"));
     puts(formatoIngenieria(5.789, "km"));
+
+    string sigla1 = distancia.pedirUnidad("Que unidad desea trnasformar?");
+    double n = input("Que cantidad?: ");
+    string sigla2 = distancia.pedirUnidad("A que lo unidad desea transformar?");
+
+    cout << n << " " << sigla1 << " es igual a " << distancia.convertir(n, sigla1, sigla2) << " " << sigla2 << endl;
+
+    area.pedirEnUnidad("Ingrese un area", "cmil");
 
     system("pause");
     return 0;

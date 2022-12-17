@@ -15,10 +15,10 @@ T input(string prompt)
 bool noPedirNadaEnConsola = false;
 
 template <typename T = double>
-T input(string prompt, T valorAutomatico)
+T input(string prompt, T default_)
 {
   if(noPedirNadaEnConsola)
-    return valorAutomatico;
+    return default_;
   
   return input<T>(prompt);
 }
