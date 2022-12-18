@@ -1,14 +1,14 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "includes/magnitudes.h"
-#include "includes/formatoDeIngenieria.h"
+#include "includes/utilidades/magnitudes.h"
+#include "includes/utilidades/formatoDeIngenieria.h"
 
 using namespace std;
 
 int main()
 {
-    usarMagnitudes();
+    usarMagnitudes(); // muy importante
 
     cout << "5 ft es igual a " << distancia.convertir(5, "ft", "cm") << " cm" << endl;
     cout << "5 mi es igual a " << distancia.convertir(5, "mi", "km") << " km" << endl;

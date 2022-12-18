@@ -77,12 +77,12 @@ public:
 
     string pedirUnidad(string prompt)
     {
-        return input<string>(prompt + " " + get_unidadesDisponibles() + ": ");
+        return input<string>(prompt + " " + get_unidadesDisponibles());
     }
 
     double pedirEnUnidad(string prompt, string sigla)
     {
-        double valor = input(prompt + " (solo el numero): ");
+        double valor = input(prompt + " (solo el numero)");
         string siglaUs = pedirUnidad("En que unidad?");
 
         valor = convertir(valor, siglaUs, sigla);

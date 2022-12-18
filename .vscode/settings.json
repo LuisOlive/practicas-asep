@@ -1,6 +1,9 @@
 {
     "editor.tabSize": 4,
     "prettier.tabWidth": 4,
+    "files.exclude": {
+        "**/*.exe": true
+    },
     "files.associations": {
         ".*rc": "json",
         "jinja": "html",

@@ -38,8 +38,8 @@ double _abs(double x)
 }
 
 // transforma los números a strings en formato de ingeniería para imprimirlos
-string formatoIngenieria(const double valor, const string unidad)
-{ // {caso 1} 34 500, {caso 2} .0000000345
+string formatoIngenieria(const double valor, const string unidad) // {caso 1} 34 500, {caso 2} .0000000345
+{
   string prefijo = " ";
   int potenciaDeDiez = 0;
   double buff = _abs(valor);

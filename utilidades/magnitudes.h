@@ -13,7 +13,8 @@ void usarMagnitudes()
         .agregarEquivalencia(3.28084, "ft") // 1m = 3.28ft
         .agregarEquivalencia(1e-3, "km")
         .agregarEquivalencia(39.3701, "in")
-        .agregarEquivalencia(621.371192e-6, "mi");
+        .agregarEquivalencia(621.371192e-6, "mi")
+        .agregarEquivalencia(1000, "mm");
 
     area
         .agregarEquivalencia(1e4, "cm2")
