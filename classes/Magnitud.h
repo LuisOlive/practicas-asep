@@ -1,7 +1,7 @@
 #include <vector>
 
-#include "input.h"
-#include "formatoDeIngenieria.h"
+#include "../utilidades/input.h"
+#include "../utilidades/formatoDeIngenieria.h"
 
 #ifndef Magnitud_H
 #define Magnitud_H

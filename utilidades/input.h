@@ -4,7 +4,7 @@
 #define INPUT_H
 
 template <typename T = double>
-T input(string prompt, bool dosPuntos = true)
+T input(string prompt = "", bool dosPuntos = true)
 {
   T x;
   std::cout << prompt;

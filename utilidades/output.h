@@ -16,6 +16,7 @@ void puts(string prompt = "")
 void hr()
 {
   puts("----------------");
+  std::cout << std::endl;
 }
 
 void limpiar()

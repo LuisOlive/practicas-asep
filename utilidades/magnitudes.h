@@ -1,4 +1,4 @@
-#include "Magnitud.h"
+#include "../classes/Magnitud.h"
 
 #ifndef MAGNITUDES_H
 #define MAGNITUDES_H

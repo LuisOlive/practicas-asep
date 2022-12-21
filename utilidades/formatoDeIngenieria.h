@@ -57,7 +57,7 @@ string formatoIngenieria(const double valor, const string unidad) // {caso 1} 34
 
   buff = valor / pow(10., potenciaDeDiez);
 
-  return std::to_string(buff) + " " + buscarPrefijo(potenciaDeDiez) + unidad;
+  return std::to_string(buff) + buscarPrefijo(potenciaDeDiez) + " " + unidad;
 }
 
 // alias de formatoIngenieria()

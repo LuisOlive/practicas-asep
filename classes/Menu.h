@@ -7,6 +7,7 @@ class Menu
 {
 public:
     std::vector<string> opciones;
+    std::vector<void (*)()> funciones;
 
     void display()
     {
@@ -29,7 +30,7 @@ public:
 
         numOpc = pedirNumeroEnIntervalo<short>("Seleccione una opcion", 1, opciones.size());
 
-        ejecutar(numOpc);
+        ejecutar(numOpc - 1); // por los arrays
 
         return desea("hacer otro calculo");
     }
@@ -37,32 +38,9 @@ public:
     void ejecutar(unsigned short i)
     {
         limpiar();
-        puts(string(".: ") + opciones[i - 1] + " :.\n");
+        puts(string(".: ") + opciones[i] + " :.\n");
 
-        switch (i)
-        {
-        case 1:
-            opc1();
-            break;
-        case 2:
-            opc2();
-            break;
-        case 3:
-            opc3();
-            break;
-        case 4:
-            opc4();
-            break;
-        case 5:
-            opc5();
-            break;
-        case 6:
-            opc6();
-            break;
-        case 7:
-            opc7();
-            break;
-        }
+        funciones[i](); 
 
         puts();
         hr();
@@ -74,13 +52,11 @@ public:
         return *this;
     }
 
-    virtual void opc1(){};
-    virtual void opc2(){};
-    virtual void opc3(){};
-    virtual void opc4(){};
-    virtual void opc5(){};
-    virtual void opc6(){};
-    virtual void opc7(){};
+    Menu &operator<<(void (*f)())
+    {
+        funciones.push_back(f);
+        return *this;
+    }
 };
 
 #endif

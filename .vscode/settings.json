@@ -1,8 +1,10 @@
 {
     "editor.tabSize": 4,
     "prettier.tabWidth": 4,
+    "editor.formatOnSave": true,
     "files.exclude": {
-        "**/*.exe": true
+        "**/*.exe": true,
+        "**/*.h.gch": true
     },
     "files.associations": {
         ".*rc": "json",
@@ -53,6 +55,7 @@
         "typeinfo": "cpp",
         "fstream": "cpp",
         "sstream": "cpp",
-        "cinttypes": "cpp"
+        "cinttypes": "cpp",
+        "complex": "cpp"
     }
 }
