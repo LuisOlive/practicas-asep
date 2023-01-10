@@ -14,30 +14,43 @@ public:
     short frecuencia;
     double voltajeLineaLinea;
     bool esEstrella;
+    double radioExt;
 
     double _rmg;
 
-    Linea()
+    Linea(short modo = 0)
     {
         esEstrella = false;
 
         numFases = input("Ingrese el numero de fases [1 o 3]");
         conductoresPorFase = pedirNumeroEnIntervalo("Cuantos conductores por fase?", 1, 4);
         longitud = distancia.pedirEnUnidad("Ingrese la longitud de la linea", "mt");
-        voltajeLineaLinea = input("Ingrese el voltaje de linea a linea");
+
+        if (modo == 1)
+            voltajeLineaLinea = input("Ingrese el voltaje de linea a linea");
+
         frecuencia = input("A que frecuencia opera? (en America se usan 60)");
-        _rmg = distancia.pedirEnUnidad("Ingrese el RMG de la tabla A3 o A4", "mt");
+
+        if (modo == 0)
+            _rmg = distancia.pedirEnUnidad("Ingrese el RMG de la tabla A3 o A4", "mt");
+        else if (modo == 1)
+            radioExt = distancia.pedirEnUnidad("Ingrese el diametro exterior", "mt") / 2.;
 
         if (conductoresPorFase > 1)
-            distanciaFase = distancia.pedirEnUnidad("Ingrese la distancia entre centros de la misma fase", "mt");
+        {
+
+            distanciaFase = distancia.pedirEnUnidad("Ingrese la separacion de haces", "mt");
+        }
 
         if (numFases == 3)
         {
-            dAB = distancia.pedirEnUnidad("Ingrese la distancia entre el haz A y el B", "mt");
-            dBC = distancia.pedirEnUnidad("Ingrese la distancia entre el haz B y el C", "mt");
-            dAC = distancia.pedirEnUnidad("Ingrese la distancia entre el haz A y el C", "mt");
-            
+            dAB = dBC = distancia.pedirEnUnidad("Ingrese la distancia entre conductores adyacentes", "mt");
+            dAC = 2 * dAB;
             esEstrella = pedirBooleano("Esta en config. estrella?");
+        }
+        else
+        {
+            distanciaFase = distancia.pedirEnUnidad("Ingrese la distancia entre fase y neutro", "mt");
         }
     }
 
@@ -51,7 +64,7 @@ public:
         if (numFases == 1)
             return distanciaFase;
 
-        return pow(dAB * dAC * dBC, 1. / 3);
+        return pow(dAB * dAC * dBC, .33333333333333);
     }
 
     double dSL()
@@ -59,7 +72,7 @@ public:
         switch (conductoresPorFase)
         {
         case 1:
-            return distanciaFase;
+            return rmg();
         case 2:
             return pow(distanciaFase * rmg(), 1. / 2);
         case 3:
@@ -89,14 +102,14 @@ public:
 
     double dSC()
     {
-        return pow(distanciaFase * rmg(), 1. / 2);
+        return pow(distanciaFase * radioExt, 1. / 2);
     }
 
     double capacitanciaUnitaria()
     {
         if (numFases == 1)
         {
-            return PI * EPSILON / log(distanciaFase / rmg());
+            return PI * EPSILON / log(distanciaFase / radioExt);
         }
 
         return 2 * PI * EPSILON / log(dmg() / dSC());
@@ -127,7 +140,7 @@ public:
 
     double potenciaReactivaCapacitiva()
     {
-        return voltajeLineaNeutro() * voltajeLineaNeutro() * admitanciaCapacitiva();
+        return 3 * voltajeLineaNeutro() * voltajeLineaNeutro() * admitanciaCapacitiva();
     }
 };
 

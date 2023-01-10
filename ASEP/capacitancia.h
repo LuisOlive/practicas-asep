@@ -7,7 +7,7 @@ void capacitancia()
 {
     puts("Definicion de la linea:");
 
-    Linea l;
+    Linea l(1);
 
     hr();
 

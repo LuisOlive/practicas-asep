@@ -11,8 +11,8 @@ void inductancia()
 
     hr();
 
-    cout << "D_eq de la linea: " << fmtIng(l.rmg(), "mt") << endl;
-    cout << "D_S de la linea: " << fmtIng(l.dmg(), "mt") << endl;
+    cout << "RMG de la linea: " << fmtIng(l.rmg(), "mt") << endl;
+    cout << "DMG de la linea: " << fmtIng(l.dmg(), "mt") << endl;
     cout << "D_SL de la linea: " << fmtIng(l.dSL(), "mt") << endl;
     cout << "Inductancia unitaria: " << fmtIng(l.inductanciaUnitaria(), "H/mt") << endl;
     cout << "Inductancia total de la linea: " << fmtIng(l.inductancia(), "H") << endl;
